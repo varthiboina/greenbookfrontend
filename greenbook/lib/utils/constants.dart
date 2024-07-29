@@ -3,6 +3,7 @@ const String poolPageName = 'pool';
 const String poolInventoryName = 'poolInventory';
 const String adminLoginName = 'adminLogin';
 const String adminDashboard = 'adminDashboard';
+const String profilePageName = 'profilepage';
 const String currency = '\$';
 
 const String productConditionNew = 'New';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:get_it/get_it.dart';
 import 'package:greenbook/drawer/main_drawer.dart';
 import 'package:greenbook/provider/app_data_provider.dart';
@@ -21,6 +22,8 @@ class _LoginPageState extends State<LoginPage> {
   bool _isButtonEnabled = true;
 
   late AuthService _authService;
+
+  @override
   void initState() {
     super.initState();
     _authService = _getIt.get<AuthService>();
@@ -30,6 +33,11 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       _isButtonEnabled = true;
     });
+  }
+
+  Future<bool> logout() async {
+    bool result = await _authService.logout();
+    return result;
   }
 
   void _disableButton() {
@@ -45,6 +53,7 @@ class _LoginPageState extends State<LoginPage> {
       drawer: const MainDrawer(),
       appBar: AppBar(
         title: const Text('Login Page'),
+        backgroundColor: Color.fromARGB(255, 227, 213, 106), // creamy white
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -53,10 +62,36 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Yard',
+                      style: GoogleFonts.roboto(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: const Color(0xFF4CAF50), // green color
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'Sail',
+                      style: GoogleFonts.roboto(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: const Color(0xFFFF6F00), // light saffron color
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: "User Name",
                   hintText: "User Name",
+                  border: OutlineInputBorder(),
+                  labelStyle: TextStyle(
+                      color: const Color(0xFFFF6F00)), // light saffron
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -70,9 +105,12 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 16.0),
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: "Password",
                   hintText: "Password",
+                  border: OutlineInputBorder(),
+                  labelStyle: TextStyle(
+                      color: const Color(0xFFFF6F00)), // light saffron
                 ),
                 obscureText: true,
                 validator: (value) {
@@ -98,10 +136,8 @@ class _LoginPageState extends State<LoginPage> {
                               .getLogin(username!)
                               .then((user) {
                             if (result) {
-                              Navigator.pushNamed(context, poolPageName,
-                                  arguments: [
-                                    user,
-                                  ]);
+                              Navigator.pushNamed(context, profilePageName,
+                                  arguments: [user]);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -121,7 +157,31 @@ class _LoginPageState extends State<LoginPage> {
                         }
                       }
                     : null,
-                child: const Text('Login'),
+                style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  backgroundColor: const Color(0xFFFF6F00), // light saffron
+                ),
+                child: Text(
+                  'Login',
+                  style: GoogleFonts.roboto(fontSize: 16, color: Colors.white),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextButton(
+                onPressed: () {
+                  // Handle navigation to sign-up page
+                },
+                child: Text(
+                  'Are you new? Sign up',
+                  style: GoogleFonts.roboto(
+                      fontSize: 16,
+                      color: const Color(0xFFFF6F00)), // light saffron
+                ),
               ),
             ],
           ),
