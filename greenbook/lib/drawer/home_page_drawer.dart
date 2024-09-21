@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:greenbook/pages/chat_list.dart';
+import 'package:greenbook/pages/chat_page.dart';
 import 'package:greenbook/pages/login_page.dart';
+import 'package:greenbook/provider/app_data_provider.dart';
 import 'package:greenbook/utils/Services/auth_services.dart';
 import 'package:greenbook/utils/constants.dart';
+import 'package:provider/provider.dart';
 
 class HomePageDrawer extends StatelessWidget {
   HomePageDrawer({super.key});
@@ -37,21 +41,29 @@ class HomePageDrawer extends StatelessWidget {
             leading: Icon(Icons.chat),
             title: Text('Chat'),
             onTap: () {
-              // Navigator.pushNamed(context, chatPageName);
+              Navigator.pushNamed(context, chatPageName);
             },
           ),
           ListTile(
             leading: Icon(Icons.shopping_basket),
             title: Text('Your Products'),
-            onTap: () {
-              //  Navigator.pushNamed(context, productsPageName);
+            onTap: () async {
+              int checkIfYouOwn = 1;
+              print(_authService.user!.uid);
+              final dataSource =
+                  Provider.of<AppDataProvider>(context, listen: false);
+              final products = await dataSource
+                  .getProductsBySellerId(_authService.user!.uid);
+              Navigator.pushNamed(context, poolInventoryName,
+                  arguments: [products, checkIfYouOwn, "None"]);
             },
           ),
           ListTile(
             leading: Icon(Icons.support_agent),
             title: Text('Support Line'),
             onTap: () {
-              //   Navigator.pushNamed(context, supportPageName);
+              //   accessChatWithProfile(context, 'Y3BRI21n1oPkx0GW0pcku2hLmNV2');
+              //   Navigator.pushNamed(contextspecific-uid-here, supportPageName);
             },
           ),
           ListTile(

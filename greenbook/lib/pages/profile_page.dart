@@ -15,7 +15,7 @@ class ProfilePage extends StatelessWidget {
       body: Center(
         child: Text(
           'Welcome',
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
     );

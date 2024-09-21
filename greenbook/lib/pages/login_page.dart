@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
       drawer: const MainDrawer(),
       appBar: AppBar(
         title: const Text('Login Page'),
-        backgroundColor: Color.fromARGB(255, 227, 213, 106), // creamy white
+        backgroundColor: Color.fromARGB(255, 230, 169, 37), // creamy white
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -70,15 +70,16 @@ class _LoginPageState extends State<LoginPage> {
                       style: GoogleFonts.roboto(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
-                        color: const Color(0xFF4CAF50), // green color
+                        color: Color.fromARGB(255, 250, 154, 45), // green color
                       ),
                     ),
                     TextSpan(
-                      text: 'Sail',
+                      text: 'Saill',
                       style: GoogleFonts.roboto(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
-                        color: const Color(0xFFFF6F00), // light saffron color
+                        color: Color.fromARGB(
+                            255, 1, 17, 2), // light saffron color
                       ),
                     ),
                   ],
@@ -87,15 +88,15 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: "User Name",
-                  hintText: "User Name",
+                  labelText: "Email",
+                  hintText: "Email",
                   border: OutlineInputBorder(),
                   labelStyle: TextStyle(
                       color: const Color(0xFFFF6F00)), // light saffron
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your username';
+                    return 'Please enter your email';
                   }
                   return null;
                 },
@@ -174,7 +175,8 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20),
               TextButton(
                 onPressed: () {
-                  // Handle navigation to sign-up page
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, signUpPageName);
                 },
                 child: Text(
                   'Are you new? Sign up',

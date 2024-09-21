@@ -4,6 +4,12 @@ const String poolInventoryName = 'poolInventory';
 const String adminLoginName = 'adminLogin';
 const String adminDashboard = 'adminDashboard';
 const String profilePageName = 'profilepage';
+const String productDetailsPage = 'productdetailspage';
+const String signUpPageName = 'signUpPage';
+const String chatPageName = 'chatPage';
+const String productListPage = 'productListPage';
+const String addProductPage = 'addProductPage';
+const String poolFormPage = 'poolFormPage';
 const String currency = '\$';
 
 const String productConditionNew = 'New';

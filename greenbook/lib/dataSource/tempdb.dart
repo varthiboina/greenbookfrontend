@@ -6,7 +6,8 @@ class TempDB {
   static List<Products> products = [
     Products(
       productId: 1,
-      sellerData: TempDBSeller.sellers[0],
+      sellerId: 'dgdfg',
+      //  sellerData: TempDBSeller.sellers[0],
       productName: 'Smartphone',
       productType: 'Electronics',
       productDescription: 'High-end smartphone with great features.',
@@ -14,8 +15,9 @@ class TempDB {
       productPrice: 799.99,
     ),
     Products(
-      productId: 2,
-      sellerData: TempDBSeller.sellers[0],
+      productId: 1,
+      sellerId: 'dgdfg',
+      //  sellerData: TempDBSeller.sellers[0],
       productName: 'Laptop',
       productType: 'Electronics',
       productDescription: 'Powerful laptop for work and gaming.',
@@ -23,8 +25,9 @@ class TempDB {
       productPrice: 1499.99,
     ),
     Products(
-      productId: 3,
-      sellerData: TempDBSeller.sellers[1],
+      productId: 1,
+      sellerId: 'dgdfg',
+      // sellerData: TempDBSeller.sellers[1],
       productName: 'Furniture Set',
       productType: 'Furniture',
       productDescription: 'Modern furniture set for living room.',

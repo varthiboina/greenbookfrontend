@@ -1,9 +1,9 @@
 class Profile {
   int? profileId;
-  String profileName;
-  String profileMobile;
-  String profileEmail;
-  String password;
+  String? profileName;
+  String? profileMobile;
+  String? profileEmail;
+  String? password;
 
   Profile(
       {this.profileId,
